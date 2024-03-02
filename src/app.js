@@ -4,6 +4,7 @@ const bodyParser = require("body-parser");
 const createError = require("http-errors");
 const xssClean = require("xss-clean");
 const rateLimit = require("express-rate-limit");
+const userRouter = require("./routers/user.route");
 const app = express();
 
 const rateLimiter = rateLimit({
@@ -18,17 +19,8 @@ app.use(xssClean());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.get("/users", (req, res) => [
-    res.send({
-        message: "Hi users",
-    }),
-]);
-
-app.get("/profile", (req, res) => [
-    res.status(200).json({
-        message: "Hi Profile",
-    }),
-]);
+// router middleware
+app.use("/api/v1/users", userRouter);
 
 //client error handeler
 app.use((req, res, next) => {
