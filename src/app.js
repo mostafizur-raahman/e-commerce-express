@@ -9,9 +9,9 @@ const seedRouter = require("./routers/seed.router");
 const app = express();
 
 const rateLimiter = rateLimit({
-    windowMs: 1 * 60 * 1000, // 1 min
-    max: 100,
-    message: "Too many request at 1 min",
+  windowMs: 1 * 60 * 1000, // 1 min
+  max: 100,
+  message: "Too many request at 1 min",
 });
 //middleware
 app.use(rateLimiter);
@@ -26,16 +26,16 @@ app.use("/api/v1/seed", seedRouter);
 
 //client error handeler
 app.use((req, res, next) => {
-    next(createError(404, "Not Found."));
+  next(createError(404, "Not Found."));
 });
 
 // server error handeler
 app.use((err, req, res, next) => {
-    console.log(err.stack);
-    return res.status(err.status || 500).json({
-        success: false,
-        message: err.message,
-    });
+  console.log(err.stack);
+  return res.status(err.status || 500).json({
+    success: false,
+    message: err.message,
+  });
 });
 
 module.exports = app;
