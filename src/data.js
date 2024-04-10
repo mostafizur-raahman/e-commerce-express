@@ -18,3 +18,7 @@ const data = {
 };
 
 module.exports = data;
+
+// DATABASE_URI=mongodb+srv://fizz:zIhdRwJLS6ibshZifizz@cluster0.jm9b2up.mongodb.net/project-ecommerce
+// SERVER_PORT=3000
+// defaultImagePath="/public/images/users/Sample_User_Icon.png"
